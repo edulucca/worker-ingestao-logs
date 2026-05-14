@@ -1,0 +1,18 @@
+# catalog-info.yaml — repo myorg/worker-ingestao-logs
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: worker-ingestao-logs
+  title: Worker de Ingestão de Logs
+  description: Consome logs dos sistemas core e salva no Data Lake para processamento.
+  tags: [python, data-engineering, worker]
+  annotations:
+    github.com/project-slug: myorg/worker-ingestao-logs
+spec:
+  type: service
+  lifecycle: production
+  owner: group:squad-data-analytics
+  system: data-analytics
+  dependsOn:
+    - resource:default/kafka-eventos-core
+    - resource:default/bucket-datalake
